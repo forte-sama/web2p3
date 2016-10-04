@@ -1,0 +1,12 @@
+.gradle
+/build/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### other files ###
+*~
+*.orig
