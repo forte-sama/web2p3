@@ -15,7 +15,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //Cargando los usuarios en memoria.
+        //carga de los usuarios en memoria.
         auth.inMemoryAuthentication()
                 .withUser("admin")
                 .password("admin")
@@ -24,14 +24,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //Marcando las reglas para permitir unicamente los usuarios
+        //reglas para permitir unicamente los usuarios
         http.authorizeRequests()
                 .antMatchers("/admin/**")
                 .hasAnyRole("ADMIN", "USER")
                 .and()
                 .formLogin()
-                .loginPage("/login") //indicando la ruta que estaremos utilizando.
-                .failureUrl("/login?error")
+                .loginPage("/admin_login") //ruta que se esta utilizando.
+                .failureUrl("/admin_login?error")
                 .permitAll()
                 .and()
                 .logout()
