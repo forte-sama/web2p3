@@ -1,28 +1,26 @@
 package web2.models;
 
-
-import web2.models.enums.Rol;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Table(name = "users")
 @Entity
-public class Usuario implements Serializable {
+public class User implements Serializable {
     @Id
-    String cedula;
-    Byte[] foto;
-    String nombre;
-    String apellido;
+    private String cedula;
+    private Byte[] foto;
+    private String nombre;
+    private String apellido;
     @Column(unique = true)
-    String email;
-    String password;
-    Rol rol;
+    private String username;
+    private String password;
+    private Boolean enabled;
 
-    public Usuario() { }
+    public User() { enabled = true; }
 
     @Override
     public String toString() {
-        return cedula + " : " + email;
+        return cedula + " : " + username;
     }
 
     public String getCedula() {
@@ -43,11 +41,11 @@ public class Usuario implements Serializable {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
     public String getPassword() {
         return password;
@@ -61,11 +59,12 @@ public class Usuario implements Serializable {
     public void setFoto(Byte[] foto) {
         this.foto = foto;
     }
-    public Rol getRol() {
-        return rol;
+    public Boolean getEnabled() {
+        return enabled;
     }
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
+
 }
 

@@ -36,6 +36,9 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-devtools')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-freemarker')
+	compile("org.springframework.boot:spring-boot-jdbc")
+	compile("org.slf4j:slf4j-api:1.6.0")
+
 	//h2 driver
 	compile('com.h2database:h2:1.4.192')
 	//webjars

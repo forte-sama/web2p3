@@ -13,12 +13,12 @@
 </head>
 <body>
     <div class="container">
-        <h2 class="center-align">Admin Login</h2>
+        <h2 class="center-align">Login</h2>
         <div class="row">
-            <form class="col s6 offset-s3" role="form" action="/admin_login" method="post">
+            <form class="col s6 offset-s3" role="form" action="/login" method="post">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="nombre" type="text" name="name" class="validate">
+                        <input id="nombre" type="text" name="username" class="validate">
                         <label for="nombre">Nombre</label>
                     </div>
                 </div>
@@ -28,14 +28,6 @@
                         <label for="pass">Password</label>
                     </div>
                 </div>
-                <#--<div class="row">-->
-                    <#--<div class="col s12">-->
-                        <#--<p>-->
-                            <#--<input type="checkbox" id="remember">-->
-                            <#--<label for="remember">Remember me</label>-->
-                        <#--</p>-->
-                    <#--</div>-->
-                <#--</div>-->
                 <div class="divider"></div>
                 <div class="row">
                     <div class="col m12">
