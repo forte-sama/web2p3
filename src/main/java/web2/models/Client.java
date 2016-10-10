@@ -1,6 +1,6 @@
 package web2.models;
 
-import com.sun.tracing.dtrace.ProviderAttributes;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,6 +19,7 @@ public class Client implements Serializable {
     String nombre;
     String apellido;
     String direccion;
+    @Column(length = 5000000)
     Byte[] foto;
 
     public Client() { }
@@ -53,11 +54,31 @@ public class Client implements Serializable {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    public Byte[] getFoto() {
+    private byte[] toPrimitives(Byte[] oBytes) {
+
+        byte[] bytes = new byte[oBytes.length];
+        for(int i = 0; i < oBytes.length; i++){
+            bytes[i] = oBytes[i];
+        }
+        return bytes;
+
+    }
+    public String getFoto() {
+        if(foto == null) return null;
+
+        byte[] imgBytesAsBase64 = Base64.encodeBase64(toPrimitives(this.foto));
+//        String imgAsBase64 = "data:image/png;base64," + imgDataAsBase64;
+        return new String(imgBytesAsBase64);
+    }
+    public Byte[] getFotoCopy() {
         return foto;
     }
     public void setFoto(Byte[] foto) {
         this.foto = foto;
     }
 
+    @Override
+    public String toString() {
+        return "'" + cedula + "': '" + nombre + "' '" + apellido + "'. '" + direccion + "'";
+    }
 }

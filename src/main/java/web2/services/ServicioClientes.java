@@ -41,9 +41,13 @@ public class ServicioClientes {
         return repoClients.findAll();
     }
 
-    public boolean crear(Client c) {
-        repoClients.save(c);
-        return true;
+    public Client findById(long id) {
+        return repoClients.findOne(id);
+    }
+
+
+    public void guardar(Client cliente) {
+        repoClients.save(cliente);
     }
 
     public void borrar(int id) {

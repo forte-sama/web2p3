@@ -24,18 +24,16 @@
                 <h1>No hay clientes...</h1>
                 <p><a href="/clientes/crear/" class="btn btn-large blue darken-4">crear uno</a></p>
             <#else>
+                <a href="/clientes/crear/" class="btn btn-large green darken-4">crear nuevo cliente</a>
+                <br>
                 <ul class="collection">
                     <#list clientes as client>
-                        <#--<li class="collection-item avatar">-->
-                            <#--<img src="img/yuna.jpg" alt="" class="circle">-->
-                            <#--<span class="title">Title</span>-->
-                            <#--<p>First Line <br>-->
-                                <#--Second Line-->
-                            <#--</p>-->
-                            <#--<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>-->
-                        <#--</li>-->
                         <li class="collection-item avatar">
-                            <i class="material-icons circle green">insert_chart</i>
+                            <#if client.foto??>
+                                <img src="data:image/png;base64,${client.foto}" alt="" class="circle">
+                            <#else>
+                                <i class="material-icons circle blue-grey">assignment_ind</i>
+                            </#if>
                             <span class="title">${client.cedula}</span>
                             <p>
                                 Nombre: ${client.nombre}
