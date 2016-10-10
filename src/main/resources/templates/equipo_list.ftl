@@ -28,9 +28,9 @@
                 <br>
                 <a class='dropdown-button btn' href='#' data-activates='dropdown1'>nuevo</a>
                 <ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="/equipos/crear/">equipo</a></li>
-                    <li><a href="/equipos/crear_grupo/">grupo</a></li>
-                    <li><a href="/equipos/crear_subgrupo/">sub-grupo</a></li>
+                    <li><a href="/equipos/crear/">Equipo</a></li>
+                    <li><a href="/equipos/crear_grupo/">Grupo</a></li>
+                    <li><a href="/equipos/crear_subgrupo/">Sub-Grupo</a></li>
                 </ul>
                 <br>
                 <ul class="collection">
