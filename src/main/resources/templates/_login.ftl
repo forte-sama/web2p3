@@ -17,32 +17,33 @@
     <title>web2p3</title>
 </head>
 <body>
-    <div class="container">
-        <h2 class="center-align">Login</h2>
-        <div class="row">
-            <form class="col s6 offset-s3" role="form" action="/login" method="post">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="nombre" type="text" name="username" class="validate">
-                        <label for="nombre">Nombre</label>
-                    </div>
+<#include "nav.ftl">
+<div class="container">
+    <h2 class="center-align">Login</h2>
+    <div class="row">
+        <form class="col s6 offset-s3" role="form" action="/login" method="post">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="nombre" type="text" name="username" class="validate">
+                    <label for="nombre">Nombre</label>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="pass" type="password" name="password" class="validate">
-                        <label for="pass">Password</label>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="pass" type="password" name="password" class="validate">
+                    <label for="pass">Password</label>
                 </div>
-                <div class="divider"></div>
-                <div class="row">
-                    <div class="col m12">
-                        <p class="right-align">
-                            <button class="btn btn-large waves-effect waves-light" type="submit" name="submit">Login</button>
-                        </p>
-                    </div>
+            </div>
+            <div class="divider"></div>
+            <div class="row">
+                <div class="col m12">
+                    <p class="right-align">
+                        <button class="btn btn-large waves-effect waves-light" type="submit" name="submit">Login</button>
+                    </p>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
+</div>
 </body>
 </html>

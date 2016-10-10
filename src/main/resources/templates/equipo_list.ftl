@@ -21,32 +21,33 @@
 <div class="container">
     <div class="row">
         <div class="col s6 offset-s3">
-            <#if clientes?size=0>
-                <h1>No hay clientes...</h1>
-                <p><a href="/clientes/crear/" class="btn btn-large blue darken-4">crear uno</a></p>
+            <#if equipos?size=0>
+                <h1>No hay equipos...</h1>
+                <p><a href="/equipos/crear/" class="btn btn-large blue darken-4">crear uno</a></p>
             <#else>
                 <br>
-                <a href="/clientes/crear/" class="btn btn-large green darken-4">crear nuevo cliente</a>
+                <a class='dropdown-button btn' href='#' data-activates='dropdown1'>nuevo</a>
+                <ul id='dropdown1' class='dropdown-content'>
+                    <li><a href="/equipos/crear/">equipo</a></li>
+                    <li><a href="/equipos/crear_grupo/">grupo</a></li>
+                    <li><a href="/equipos/crear_subgrupo/">sub-grupo</a></li>
+                </ul>
                 <br>
                 <ul class="collection">
-                    <#list clientes as client>
+                    <#list equipos as equipo>
                         <li class="collection-item avatar">
-                            <#if client.foto??>
-                                <img src="data:image/png;base64,${client.foto}" alt="" class="circle">
+                            <#if equipo.foto??>
+                                <img src="data:image/png;base64,${equipo.foto}" alt="" class="circle">
                             <#else>
-                                <i class="material-icons circle blue-grey">assignment_ind</i>
+                                <i class="material-icons circle blue-grey">shopping_basket</i>
                             </#if>
-                            <span class="title">${client.cedula}</span>
+                            <span class="title">${equipo.nombre}</span>
                             <p>
-                                Nombre: ${client.nombre}
-                                <br>
-                                Apellido: ${client.apellido}
-                                <br>
-                                Direccion: ${client.direccion}
+                                Existencia: ${equipo.cantidad}
                             </p>
                             <span class="secondary-content">
-                                <a href="/clientes/editar/${client.id}" class="btn-flat waves-effect waves-teal">Editar</a>
-                                <a href="/clientes/borrar/${client.id}" class="btn-flat waves-effect waves-teal">Borrar</a>
+                                <a href="/equipos/editar/${equipo.id}" class="btn-flat waves-effect waves-teal">Editar</a>
+                                <a href="/equipos/borrar/${equipo.id}" class="btn-flat waves-effect waves-teal">Borrar</a>
                             </span>
                         </li>
                     </#list>

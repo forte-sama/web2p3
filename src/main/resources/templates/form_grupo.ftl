@@ -20,9 +20,23 @@
 <#include "nav.ftl">
 <div class="container">
     <div class="row">
-        <div class="col s12">
-            <h1>Te fuiste</h1>
-            <a  href="/" class="btn red darken-4">Go Home</a>
+        <div class="col s6 offset-s3">
+            <h1>Formulario Grupo</h1>
+            <form action="/equipos/processGrupo/" method="post">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="nombre" type="text" name="nombre">
+                        <label for="nombre">Nombre</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <p class="right-align">
+                            <button class="btn btn-large waves-effect waves-light" type="submit" name="submit">Submit</button>
+                        </p>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

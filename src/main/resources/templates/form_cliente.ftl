@@ -17,8 +17,11 @@
     <title>web2p3</title>
 </head>
 <body>
+<#include "nav.ftl">
+<div class="container">
     <div class="row">
         <div class="col s6 offset-s3">
+            <h1>Formulario Cliente</h1>
             <form enctype="multipart/form-data" action="/clientes/processForm/" method="post">
                 <#if cliente??>
                     <input type="hidden" name="id" value="${cliente.id}" readonly>
@@ -48,13 +51,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col m12">
-                        <p class="right-align">
-                            <button class="btn btn-large waves-effect waves-light" type="submit" name="submit">Submit</button>
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>Foto</span>
@@ -65,8 +61,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col s12">
+                        <p class="right-align">
+                            <button class="btn btn-large waves-effect waves-light" type="submit" name="submit">Submit</button>
+                        </p>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
+</div>
 </body>
 </html>

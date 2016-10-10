@@ -17,10 +17,8 @@ import java.util.Locale;
 @Controller
 @RequestMapping("/clientes")
 public class ClientesController {
-
     @Autowired
     private ServicioClientes servicioClientes;
-
     @Autowired
     private MessageSource messageSource;
 
@@ -49,6 +47,7 @@ public class ClientesController {
         return "form_cliente";
     }
 
+    @PreAuthorize("hasAnyAuthority('ADMIN','USUARIO_NORMAL')")
     @RequestMapping(value = "/processForm/", method = RequestMethod.POST)
     public String processForm(@RequestParam("fotox") MultipartFile file, @ModelAttribute Client cliente) {
 

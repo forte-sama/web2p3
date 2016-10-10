@@ -17,6 +17,13 @@
     <title>web2p3</title>
 </head>
 <body>
-<h1>${"basic"}</h1>
+<#include "nav.ftl">
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1>${"BASIC"}</h1>
+        </div>
+    </div>
+</div>
 </body>
 </html>
