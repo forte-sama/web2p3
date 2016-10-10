@@ -32,13 +32,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         //reglas para permitir unicamente los usuarios
         http.authorizeRequests()
-//            .antMatchers("/wepa").hasAnyAuthority("ADMIN","CUERO")
-//            .antMatchers("/db/").hasAnyAuthority("ADMIN")
             .anyRequest().permitAll()
         .and()
             .formLogin().loginPage("/login").permitAll()
         .and()
-            .logout().logoutSuccessUrl("/login?logout").permitAll()
+            .logout().invalidateHttpSession(true).logoutSuccessUrl("/login?logout").permitAll()
         .and()
             .exceptionHandling().accessDeniedPage("/access_denied");
 

@@ -7,12 +7,9 @@ import java.io.Serializable;
 @Entity
 public class User implements Serializable {
     @Id
-    private String cedula;
-    private Byte[] foto;
+    private String username;
     private String nombre;
     private String apellido;
-    @Column(unique = true)
-    private String username;
     private String password;
     private Boolean enabled;
 
@@ -20,15 +17,9 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return cedula + " : " + username;
+        return username + " : " + nombre;
     }
 
-    public String getCedula() {
-        return cedula;
-    }
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
     public String getNombre() {
         return nombre;
     }
@@ -52,12 +43,6 @@ public class User implements Serializable {
     }
     public void setPassword(String password) {
         this.password = password;
-    }
-    public Byte[] getFoto() {
-        return foto;
-    }
-    public void setFoto(Byte[] foto) {
-        this.foto = foto;
     }
     public Boolean getEnabled() {
         return enabled;

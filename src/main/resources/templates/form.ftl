@@ -17,27 +17,25 @@
     <title>web2p3</title>
 </head>
 <body>
-    <div class="container">
-        <h2 class="center-align">Login</h2>
-        <div class="row">
-            <form class="col s6 offset-s3" role="form" action="/login" method="post">
+    <div class="row">
+        <div class="col s12">
+            <form class="col s6 offset-s3" role="form" action="/form" method="post">
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="nombre" type="text" name="username" class="validate">
+                        <input id="nombre" type="text" name="nombre" class="validate">
                         <label for="nombre">Nombre</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="pass" type="password" name="password" class="validate">
-                        <label for="pass">Password</label>
+                        <input id="apellido" type="text" name="apellido" class="validate">
+                        <label for="apellido">Apellido</label>
                     </div>
                 </div>
-                <div class="divider"></div>
                 <div class="row">
                     <div class="col m12">
                         <p class="right-align">
-                            <button class="btn btn-large waves-effect waves-light" type="submit" name="submit">Login</button>
+                            <button class="btn btn-large waves-effect waves-light" type="submit" name="submit">Submit</button>
                         </p>
                     </div>
                 </div>
