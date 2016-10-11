@@ -28,24 +28,28 @@
                 </#if>
                 <div class="row">
                     <div class="input-field col s12">
+                        <i class="material-icons prefix">contacts</i>
                         <input id="cedula" type="text" name="cedula" <#if cliente??>value="${cliente.cedula}" readonly</#if>>
                         <label>Cedula</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
+                        <i class="material-icons prefix">person_pin</i>
                         <input id="nombre" type="text" name="nombre" <#if cliente??>value="${cliente.nombre}"</#if>>
                         <label for="nombre">Nombre</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
+                        <i class="material-icons prefix">person_pin</i>
                         <input id="apellido" type="text" name="apellido" <#if cliente??>value="${cliente.apellido}"</#if>>
                         <label for="apellido">Apellido</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
+                        <i class="material-icons prefix">location_on</i>
                         <input id="direccion" type="text" name="direccion" <#if cliente??>value="${cliente.direccion}"</#if>>
                         <label for="direccion">Direccion</label>
                     </div>

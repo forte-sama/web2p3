@@ -25,6 +25,7 @@
             <form action="/equipos/processGrupo/" method="post">
                 <div class="row">
                     <div class="input-field col s12">
+                        <i class="material-icons prefix">receipt</i>
                         <input id="nombre" type="text" name="nombre">
                         <label for="nombre">Nombre</label>
                     </div>

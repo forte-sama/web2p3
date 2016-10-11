@@ -20,6 +20,7 @@ public class AlquilerEquipo implements Serializable {
     String fechaEntrega;
     @ManyToOne
     Equipo equipo;
+    Integer cantidad;
 
     public AlquilerEquipo() { }
 
@@ -52,6 +53,12 @@ public class AlquilerEquipo implements Serializable {
     }
     public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
+    }
+    public Integer getCantidad() {
+        return cantidad;
+    }
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 
 

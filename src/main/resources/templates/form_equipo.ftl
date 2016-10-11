@@ -32,18 +32,21 @@
                     </#if>
                     <div class="row">
                         <div class="input-field col s12">
+                            <i class="material-icons prefix">receipt</i>
                             <input id="nombre" type="text" name="nombre" <#if equipo??>value="${equipo.nombre}"</#if>>
                             <label for="nombre">Nombre</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
+                            <i class="material-icons prefix">view_headline</i>
                             <input id="cantidad" type="text" name="cantidad" <#if equipo??>value="${equipo.cantidad}"</#if>>
                             <label for="cantidad">Cantidad</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
+                            <i class="material-icons prefix">supervisor_account</i>
                             <select id="subgrupo" name="subGrupo">
                                 <option value="" disabled selected>Elige Sub Familia</option>
                                 <#list subgrupos as sgrupo>

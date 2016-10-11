@@ -23,25 +23,29 @@
     <div class="row">
         <div class="col s6 offset-s3">
             <h1>Alquilar equipo</h1>
+            <#if errorfecha??><h3 class="red-text">Hubo un error: ${errorfecha}</h3></#if>
+            <#if errorcliente??><h3 class="red-text">Hubo un error: ${errorcliente}</h3></#if>
+            <#if errorcantidad??><h3 class="red-text">Hubo un error: ${errorcantidad}</h3></#if>
             <form action="/alquiler/processAlquiler" method="post">
                 <div class="row">
                     <div class="col s12">
                         <div class="row">
                             <div class="input-field col s12">
-                                <i class="material-icons prefix">textsms</i>
+                                <i class="material-icons prefix">contacts</i>
                                 <input type="text" id="cliente" name="cliente">
                                 <label for="cliente">Cliente</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <i class="material-icons prefix">textsms</i>
+                                <i class="material-icons prefix">schedule</i>
                                 <input type="text" id="fechaEntrega" name="fechaEntrega" class="datepicker">
                                 <label for="fechaEntrega">Fecha de Entrega</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
+                                <i class="material-icons prefix">shopping_cart</i>
                                 <select id="equipo" name="equipo" class="icons">
                                     <option value="" disabled selected>Elige Equipo</option>
                                     <#list equipos as equipo>
@@ -53,6 +57,13 @@
                                     </#list>
                                 </select>
                                 <label for="equipo">Equipo</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <p class="range-field">
+                                    <input type="range" id="cantidad" name="cantidad" min="1" max="20" />
+                                </p>
                             </div>
                         </div>
                         <div class="row">
