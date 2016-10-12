@@ -23,9 +23,16 @@
     <div class="row">
         <div class="col s6 offset-s3">
             <h1>Alquilar equipo</h1>
-            <#if errorfecha??><h3 class="red-text">Hubo un error: ${errorfecha}</h3></#if>
-            <#if errorcliente??><h3 class="red-text">Hubo un error: ${errorcliente}</h3></#if>
-            <#if errorcantidad??><h3 class="red-text">Hubo un error: ${errorcantidad}</h3></#if>
+            <#if errorfecha?? || errorcliente?? || errorcantidad??>
+                <#if errorfecha??><h5 class="red-text">Hubo un error: ${errorfecha}</h5></#if>
+                <#if errorcliente??><h5 class="red-text">Hubo un error: ${errorcliente}</h5></#if>
+                <#if errorcantidad??>
+                    <h5 class="red-text">Hubo un error con los equipos:</h5>
+                    <#list errorcantidad as mensaje>
+                        <h6 class="red-text">${mensaje}</h6>
+                    </#list>
+                </#if>
+            </#if>
             <form action="/alquiler/processAlquiler" method="post">
                 <div class="row">
                     <div class="col s12">

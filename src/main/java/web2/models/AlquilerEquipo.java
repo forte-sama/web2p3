@@ -28,6 +28,14 @@ public class AlquilerEquipo implements Serializable {
 
     public AlquilerEquipo() { devuelto = false; }
 
+    public AlquilerEquipo(AlquilerEquipo a,Equipo e) {
+        this.fechaRealizacion = a.getFechaRealizacion();
+        this.fechaEntrega     = a.getFechaEntrega();
+        this.devuelto         = false;
+        this.cliente          = a.getCliente();
+        this.equipo           = e;
+    }
+
     public Long getId() {
         return id;
     }

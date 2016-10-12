@@ -21,17 +21,25 @@ public class ServicioAlquilerEquipo {
     public void init() { }
 
     public void guardar(AlquilerEquipo alquiler) {
-        repoAlquiler.save(alquiler);
-
-//        Equipo equipoAlquilado = alquiler.getEquipos();
-//        equipoAlquilado.setCantidad(equipoAlquilado.getCantidad() - alquiler.getCantidad());
-//        servicioEquipos.guardar(equipoAlquilado);
+        //crear nuevo alquiler para cada equipo
+        for(Equipo equipo : alquiler.getEquipos()) {
+            //crear nueva copia de alquiler con el equipo asignado
+            AlquilerEquipo a = new AlquilerEquipo(alquiler,equipo);
+            repoAlquiler.save(a);
+            //reducir existencia
+            equipo.setCantidad(equipo.getCantidad() - 1);
+            servicioEquipos.guardar(equipo);
+        }
     }
 
     public List<String> buscarEquiposNoExistencia(AlquilerEquipo alquiler) {
         List<String> res = new ArrayList<>();
 
-
+        for(Equipo equipo : alquiler.getEquipos()) {
+            if(equipo.getCantidad() <= 0) {
+                res.add(equipo.getNombre());
+            }
+        }
 
         return res;
     }

@@ -89,7 +89,7 @@ public class AlquilerController {
             System.out.println("Ocurrio un error con la fecha de realizacion");
         }
 
-//        servicioAlquiler.guardar(alquiler);
+        servicioAlquiler.guardar(alquiler);
 
         return "redirect:/alquiler/";
     }
