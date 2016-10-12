@@ -2,17 +2,14 @@ package web2.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.dao.SystemWideSaltSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import web2.models.AlquilerEquipo;
-import web2.models.Equipo;
 import web2.services.ServicioAlquilerEquipo;
 import web2.services.ServicioEquipos;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -35,10 +32,27 @@ public class AlquilerController {
     @PreAuthorize("hasAnyAuthority('ADMIN','USUARIO_NORMAL')")
     @RequestMapping("/crear")
     public String formCrearAlquiler(@RequestParam(required = false,name = "error") String error,
-                                        Model model, Locale locale) {
+                                    Model model, Locale locale) {
         model.addAttribute("equipos",servicioEquipos.findAll());
 
         return "form_alquiler";
+    }
+
+    @PreAuthorize("hasAnyAuthority('ADMIN','USUARIO_NORMAL')")
+    @RequestMapping("/devolver")
+    public String formDevolverEquipo(Model model, Locale locale) {
+        model.addAttribute("equipos",servicioEquipos.findAll());
+
+        //agregarle atributo monto a los equipos
+
+        //obtener string de fechas
+        //parsear fechas para construir dates
+        //usar dates para construir datetimes
+        //usar datetimes para calcular intervalo de tiempo
+        //usar tiempo para calcular monto
+        //aumentar existencia de equipo y marcarlo como devuelto
+
+        return "form_devolucion";
     }
 
     @PreAuthorize("hasAnyAuthority('ADMIN','USUARIO_NORMAL')")
