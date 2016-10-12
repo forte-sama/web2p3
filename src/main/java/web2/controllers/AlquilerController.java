@@ -15,9 +15,7 @@ import web2.services.ServicioEquipos;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 @Controller
 @RequestMapping("/alquiler")
@@ -45,7 +43,8 @@ public class AlquilerController {
 
     @PreAuthorize("hasAnyAuthority('ADMIN','USUARIO_NORMAL')")
     @RequestMapping(value = "/processAlquiler", method = RequestMethod.POST)
-    public String processForm(@ModelAttribute AlquilerEquipo alquiler, RedirectAttributes redirectAttributes) {
+    public String processForm(@ModelAttribute AlquilerEquipo alquiler,
+                              RedirectAttributes redirectAttributes) {
 
         //validar que el cliente existe
         boolean falloNoCliente = alquiler.getCliente() == null;
@@ -60,16 +59,25 @@ public class AlquilerController {
             falloNoFecha = true;
         }
         //validar que hay existencia
-        boolean falloNoCantidad = alquiler.getEquipo().getCantidad() < alquiler.getCantidad();
+        List<String> equiposNoExistencia = servicioAlquiler.buscarEquiposNoExistencia(alquiler);
+        boolean falloNoCantidad = equiposNoExistencia.size() > 0;
 
         if(falloNoFecha || falloNoCliente || falloNoCantidad) {
             //retornar al mismo formulario pero con error
-            if(falloNoFecha)
+            if (falloNoFecha) {
                 redirectAttributes.addFlashAttribute("errorfecha", "No se puede fecha de entrega anterior a hoy");
-            if(falloNoCliente)
+            }
+            if(falloNoCliente) {
                 redirectAttributes.addFlashAttribute("errorcliente", "El cliente indicado no se encuentra");
-            if(falloNoCantidad)
-                redirectAttributes.addFlashAttribute("errorcantidad", "No hay tantas unidades disponibles");
+            }
+            if(falloNoCantidad) {
+                List<String> mensajes = new ArrayList<>();
+                for(String equipo : equiposNoExistencia) {
+                    mensajes.add("No hay mas ejemplares de: " + equipo);
+                }
+
+                redirectAttributes.addFlashAttribute("errorcantidad",mensajes);
+            }
 
             return "redirect:/alquiler/crear";
         }

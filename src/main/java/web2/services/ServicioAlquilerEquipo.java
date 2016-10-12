@@ -7,6 +7,8 @@ import web2.models.Equipo;
 import web2.repositories.RepoAlquilerEquipo;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ServicioAlquilerEquipo {
@@ -21,8 +23,16 @@ public class ServicioAlquilerEquipo {
     public void guardar(AlquilerEquipo alquiler) {
         repoAlquiler.save(alquiler);
 
-        Equipo equipoAlquilado = alquiler.getEquipo();
-        equipoAlquilado.setCantidad(equipoAlquilado.getCantidad() - alquiler.getCantidad());
-        servicioEquipos.guardar(equipoAlquilado);
+//        Equipo equipoAlquilado = alquiler.getEquipos();
+//        equipoAlquilado.setCantidad(equipoAlquilado.getCantidad() - alquiler.getCantidad());
+//        servicioEquipos.guardar(equipoAlquilado);
+    }
+
+    public List<String> buscarEquiposNoExistencia(AlquilerEquipo alquiler) {
+        List<String> res = new ArrayList<>();
+
+
+
+        return res;
     }
 }

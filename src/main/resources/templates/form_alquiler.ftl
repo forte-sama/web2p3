@@ -46,7 +46,7 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">shopping_cart</i>
-                                <select id="equipo" name="equipo" class="icons">
+                                <select id="equipo" name="equipos" class="icons" multiple>
                                     <option value="" disabled selected>Elige Equipo</option>
                                     <#list equipos as equipo>
                                         <#if equipo.foto??>
@@ -57,13 +57,6 @@
                                     </#list>
                                 </select>
                                 <label for="equipo">Equipo</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <p class="range-field">
-                                    <input type="range" id="cantidad" name="cantidad" min="1" max="20" />
-                                </p>
                             </div>
                         </div>
                         <div class="row">

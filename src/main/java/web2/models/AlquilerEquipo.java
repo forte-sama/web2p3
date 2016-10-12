@@ -4,6 +4,8 @@ import javax.annotation.Generated;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by forte on 10/10/16.
@@ -20,9 +22,11 @@ public class AlquilerEquipo implements Serializable {
     String fechaEntrega;
     @ManyToOne
     Equipo equipo;
-    Integer cantidad;
+    Boolean devuelto;
+    @Transient
+    Set<Equipo> equipos;
 
-    public AlquilerEquipo() { }
+    public AlquilerEquipo() { devuelto = false; }
 
     public Long getId() {
         return id;
@@ -48,17 +52,23 @@ public class AlquilerEquipo implements Serializable {
     public void setFechaEntrega(String fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
     }
+    public Set<Equipo> getEquipos() {
+        return equipos;
+    }
+    public void setEquipos(Set<Equipo> equipos) {
+        this.equipos = equipos;
+    }
     public Equipo getEquipo() {
         return equipo;
     }
     public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
     }
-    public Integer getCantidad() {
-        return cantidad;
+    public Boolean getDevuelto() {
+        return devuelto;
     }
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
+    public void setDevuelto(Boolean devuelto) {
+        this.devuelto = devuelto;
     }
 
 
