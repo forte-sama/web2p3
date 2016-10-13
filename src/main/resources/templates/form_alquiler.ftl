@@ -13,7 +13,6 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="/webjars/materializecss/0.97.7/js/materialize.js"></script>
     <script src="/js/custom.js"></script>
-    <script src="/js/alquiler_view.js"></script>
 
     <title>web2p3</title>
 </head>
@@ -57,9 +56,17 @@
                                     <option value="" disabled selected>Elige Equipo</option>
                                     <#list equipos as equipo>
                                         <#if equipo.foto??>
-                                            <option value="${equipo.id}" data-icon="data:image/png;base64,${equipo.foto}" class="left circle">${equipo.nombre}</option>
+                                            <option value="${equipo.id}"
+                                                    data-icon="data:image/png;base64,${equipo.foto}"
+                                                    precio="${equipo.precio}"
+                                                    class="left circle item_equipo">
+                                                ${equipo.nombre + " RD$" + equipo.precio}
+                                            </option>
                                         <#else>
-                                            <option value="${equipo.id}"><i class="material-icons blue-grey left circle">shopping_basket</i>${equipo.nombre}</option>
+                                            <option value="${equipo.id}" precio="${equipo.precio}">
+                                                <i class="material-icons blue-grey left circle item_equipo">shopping_basket</i>
+                                                ${equipo.nombre + " RD$" + equipo.precio}
+                                            </option>
                                         </#if>
                                     </#list>
                                 </select>

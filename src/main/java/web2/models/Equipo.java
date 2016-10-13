@@ -17,6 +17,7 @@ public class Equipo {
     Long id;
     String nombre;
     Integer cantidad;
+    Double precio;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="sub_grupo_id")
     SubGrupo subGrupo;
@@ -43,6 +44,12 @@ public class Equipo {
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
+    public Double getPrecio() {
+        return precio;
+    }
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
     public SubGrupo getSubGrupo() {
         return subGrupo;
     }
@@ -62,7 +69,6 @@ public class Equipo {
         if(foto == null) return null;
 
         byte[] imgBytesAsBase64 = Base64.encodeBase64(toPrimitives(this.foto));
-//        String imgAsBase64 = "data:image/png;base64," + imgDataAsBase64;
         return new String(imgBytesAsBase64);
     }
     public Byte[] getFotoCopy() {

@@ -21,7 +21,13 @@ public class ServicioAlquilerEquipo {
     public void init() { }
 
     public void guardar(AlquilerEquipo alquiler) {
-        //crear nuevo alquiler para cada equipo
+        //actualizar en caso de devolucion
+        if(alquiler.getId() != null) {
+            repoAlquiler.save(alquiler);
+            return;
+        }
+
+        //crear nuevo alquiler para cada equipo en los demas casos
         for(Equipo equipo : alquiler.getEquipos()) {
             //crear nueva copia de alquiler con el equipo asignado
             AlquilerEquipo a = new AlquilerEquipo(alquiler,equipo);
@@ -42,5 +48,13 @@ public class ServicioAlquilerEquipo {
         }
 
         return res;
+    }
+
+    public Iterable<AlquilerEquipo> equiposPendientes() {
+        return repoAlquiler.findEquiposPendientes();
+    }
+
+    public AlquilerEquipo findById(Long id) {
+        return repoAlquiler.findOne(id);
     }
 }

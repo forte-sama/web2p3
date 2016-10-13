@@ -39,6 +39,13 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
+                            <i class="material-icons prefix">label_outline</i>
+                            <input id="precio" type="text" name="precio" <#if equipo??>value="${equipo.precio}"</#if>>
+                            <label for="precio">Precio</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
                             <i class="material-icons prefix">view_headline</i>
                             <input id="cantidad" type="text" name="cantidad" <#if equipo??>value="${equipo.cantidad}"</#if>>
                             <label for="cantidad">Cantidad</label>

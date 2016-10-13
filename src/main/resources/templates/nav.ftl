@@ -13,4 +13,5 @@
 </nav>
 <ul id="menu_alquiler" class="dropdown-content">
     <li><a href="/alquiler/crear">Crear</a></li>
+    <li><a href="/alquiler/pendientes">Pendientes</a></li>
 </ul>

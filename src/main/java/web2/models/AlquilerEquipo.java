@@ -1,10 +1,11 @@
 package web2.models;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.List;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Set;
 
 /**
@@ -20,9 +21,10 @@ public class AlquilerEquipo implements Serializable {
     @ManyToOne
     Client cliente;
     String fechaEntrega;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     Equipo equipo;
     Boolean devuelto;
+    Double montoPagado;
     @Transient
     Set<Equipo> equipos;
 
@@ -78,6 +80,21 @@ public class AlquilerEquipo implements Serializable {
     public void setDevuelto(Boolean devuelto) {
         this.devuelto = devuelto;
     }
+    public Double getMontoPagado() {
+        return montoPagado;
+    }
+    public void setMontoPagado(Double montoPagado) {
+        this.montoPagado = montoPagado;
+    }
+    public Double getMontoHastaLaFecha() {
+        //obtener string de fechas
+        //parsear fechas para construir dates
+        LocalDate inicio = LocalDate.parse(this.fechaRealizacion, DateTimeFormatter.ofPattern("dd MMMM, yyyy"));
+        LocalDate fin = LocalDate.parse(this.fechaEntrega, DateTimeFormatter.ofPattern("dd MMMM, yyyy"));
+        LocalDate target = LocalDate.now();
 
+        long cant_dias = Math.max(1,ChronoUnit.DAYS.between(inicio,fin));
+        return cant_dias * this.equipo.getPrecio();
+    }
 
 }

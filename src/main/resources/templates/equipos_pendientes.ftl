@@ -21,32 +21,27 @@
 <div class="container">
     <div class="row">
         <div class="col s6 offset-s3">
-            <#if clientes?size=0>
-                <h1>No hay clientes...</h1>
-                <p><a href="/clientes/crear/" class="btn btn-large blue darken-4">crear uno</a></p>
+            <#if alquileres?size=0>
+                <h1>No hay equipos pendientes...</h1>
             <#else>
-                <br>
-                <a href="/clientes/crear/" class="btn btn-large green darken-4">crear nuevo cliente</a>
-                <br>
                 <ul class="collection">
-                    <#list clientes as client>
+                    <#list alquileres as a>
                         <li class="collection-item avatar">
-                            <#if client.foto??>
-                                <img src="data:image/png;base64,${client.foto}" alt="" class="circle">
+                            <#if a.equipo.foto??>
+                                <img src="data:image/png;base64,${a.equipo.foto}" alt="" class="circle">
                             <#else>
-                                <i class="material-icons circle blue-grey">assignment_ind</i>
+                                <i class="material-icons circle blue-grey">shopping_basket</i>
                             </#if>
-                            <span class="title"><b>${client.cedula}</b></span>
+                            <span class="title"><b>${a.equipo.nombre}</b></span>
                             <p>
-                                <b>Nombre:</b> ${client.nombre}
+                                <b>Fecha Alquiler:</b> ${a.fechaRealizacion}
                                 <br>
-                                <b>Apellido:</b> ${client.apellido}
+                                <b>Fecha Entrega:</b> ${a.fechaEntrega}
                                 <br>
-                                <b>Direccion:</b> ${client.direccion}
+                                <b>Monto a pagar:</b> RD$ ${a.getMontoHastaLaFecha()?string["0.##"]}
                             </p>
                             <span class="secondary-content">
-                                <a href="/clientes/editar/${client.id}" class="btn-flat waves-effect waves-teal">Editar</a>
-                                <a href="/clientes/borrar/${client.id}" class="btn-flat waves-effect waves-teal">Borrar</a>
+                                <a href="/alquiler/devolverform/${a.id}" class="btn-flat waves-effect waves-teal">Devolver</a>
                             </span>
                         </li>
                     </#list>

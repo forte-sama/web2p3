@@ -53,16 +53,6 @@ public class EquiposController {
     }
 
     @PreAuthorize("hasAnyAuthority('ADMIN','USUARIO_NORMAL')")
-    @RequestMapping("/borrar/{id}")
-    public String borrar(@PathVariable Long id,
-                         Model model, Locale locale) {
-
-        servicioEquipos.borrar(id);
-
-        return "redirect:/equipos/";
-    }
-
-    @PreAuthorize("hasAnyAuthority('ADMIN','USUARIO_NORMAL')")
     @RequestMapping(value = "/processEquipo/", method = RequestMethod.POST)
     public String processForm(@RequestParam("fotox") MultipartFile file, @ModelAttribute Equipo equipo) {
 

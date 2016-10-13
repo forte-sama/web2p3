@@ -41,13 +41,12 @@
                             <#else>
                                 <i class="material-icons circle blue-grey">shopping_basket</i>
                             </#if>
-                            <span class="title">${equipo.nombre}</span>
+                            <span class="title"><b>${equipo.nombre}</b></span>
                             <p>
-                                Existencia: ${equipo.cantidad}
+                                <b>Existencia:</b> ${equipo.cantidad}
                             </p>
                             <span class="secondary-content">
                                 <a href="/equipos/editar/${equipo.id}" class="btn-flat waves-effect waves-teal">Editar</a>
-                                <a href="/equipos/borrar/${equipo.id}" class="btn-flat waves-effect waves-teal">Borrar</a>
                             </span>
                         </li>
                     </#list>

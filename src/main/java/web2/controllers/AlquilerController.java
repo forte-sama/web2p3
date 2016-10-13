@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import web2.models.AlquilerEquipo;
+import web2.models.Equipo;
 import web2.services.ServicioAlquilerEquipo;
 import web2.services.ServicioEquipos;
 
@@ -26,7 +27,7 @@ public class AlquilerController {
     @RequestMapping("/")
     public String index(Model model, Locale locale) {
 
-        return "basic";
+        return "redirect:/alquiler/crear";
     }
 
     @PreAuthorize("hasAnyAuthority('ADMIN','USUARIO_NORMAL')")
@@ -39,20 +40,42 @@ public class AlquilerController {
     }
 
     @PreAuthorize("hasAnyAuthority('ADMIN','USUARIO_NORMAL')")
-    @RequestMapping("/devolver")
-    public String formDevolverEquipo(Model model, Locale locale) {
-        model.addAttribute("equipos",servicioEquipos.findAll());
+    @RequestMapping(value = "/devolucion", method = RequestMethod.POST)
+    public String formDevolverEquipo(@ModelAttribute AlquilerEquipo alquiler,
+                                     Model model, Locale locale,
+                                     RedirectAttributes redirectAttributes) {
 
-        //agregarle atributo monto a los equipos
+        Long alquiler_id = alquiler.getId();
 
-        //obtener string de fechas
-        //parsear fechas para construir dates
-        //usar dates para construir datetimes
-        //usar datetimes para calcular intervalo de tiempo
-        //usar tiempo para calcular monto
-        //aumentar existencia de equipo y marcarlo como devuelto
+        AlquilerEquipo found = servicioAlquiler.findById(alquiler_id);
+        found.setDevuelto(true);
+        found.setMontoPagado(found.getMontoHastaLaFecha());
 
-        return "form_devolucion";
+        Equipo equipoFound = found.getEquipo();
+        equipoFound.setCantidad(equipoFound.getCantidad() + 1);
+
+        servicioEquipos.guardar(equipoFound);
+        servicioAlquiler.guardar(found);
+
+        return "redirect:/alquiler/pendientes";
+    }
+
+    @PreAuthorize("hasAnyAuthority('ADMIN','USUARIO_NORMAL')")
+    @RequestMapping("/devolverform/{id}")
+    public String formEditar(@PathVariable Long id,
+                             Model model, Locale locale) {
+
+        model.addAttribute("a",servicioAlquiler.findById(id));
+
+        return "form_devolver_equipo";
+    }
+
+    @PreAuthorize("hasAnyAuthority('ADMIN','USUARIO_NORMAL')")
+    @RequestMapping("/pendientes")
+    public String equiposNoDevueltos(Model model, Locale locale) {
+        model.addAttribute("alquileres",servicioAlquiler.equiposPendientes());
+
+        return "equipos_pendientes";
     }
 
     @PreAuthorize("hasAnyAuthority('ADMIN','USUARIO_NORMAL')")
