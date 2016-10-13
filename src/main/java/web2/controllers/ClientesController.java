@@ -26,6 +26,7 @@ public class ClientesController {
     @RequestMapping("/")
     public String index(Model model, Locale locale) {
         model.addAttribute("clientes",servicioClientes.findAll());
+        model.addAttribute("titulo",messageSource.getMessage("client_list",null,locale));
 
         return "client_list";
     }

@@ -29,6 +29,7 @@ public class EquiposController {
     @RequestMapping("/")
     public String index(Model model, Locale locale) {
         model.addAttribute("equipos",servicioEquipos.findAll());
+        model.addAttribute("titulo",messageSource.getMessage("equipo_list",null,locale));
 
         return "equipo_list";
     }

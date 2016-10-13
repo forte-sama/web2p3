@@ -17,6 +17,13 @@
     <title>No access</title>
 </head>
 <body>
-<h1>No tienes acceso. Get over it.</h1>
+<div class="container">
+    <div class="row">
+        <div class="col s8 offset-2">
+            <h1>No tienes acceso. Get over it.</h1>
+            <a href="/" class="btn btn-large blue-grey darken-2">Go Home.</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>

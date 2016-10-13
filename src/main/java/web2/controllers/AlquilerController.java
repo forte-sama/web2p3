@@ -1,6 +1,7 @@
 package web2.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,8 @@ public class AlquilerController {
     private ServicioAlquilerEquipo servicioAlquiler;
     @Autowired
     private ServicioEquipos servicioEquipos;
+    @Autowired
+    private MessageSource messageSource;
 
     @PreAuthorize("hasAnyAuthority('ADMIN','USUARIO_NORMAL')")
     @RequestMapping("/")
@@ -57,6 +60,7 @@ public class AlquilerController {
         servicioEquipos.guardar(equipoFound);
         servicioAlquiler.guardar(found);
 
+        redirectAttributes.addFlashAttribute("mensaje","El equipo fue devuelto exitosamente");
         return "redirect:/alquiler/pendientes";
     }
 
@@ -74,6 +78,7 @@ public class AlquilerController {
     @RequestMapping("/pendientes")
     public String equiposNoDevueltos(Model model, Locale locale) {
         model.addAttribute("alquileres",servicioAlquiler.equiposPendientes());
+        model.addAttribute("titulo",messageSource.getMessage("alquiler_pendiente",null,locale));
 
         return "equipos_pendientes";
     }
@@ -115,8 +120,7 @@ public class AlquilerController {
 
                 redirectAttributes.addFlashAttribute("errorcantidad",mensajes);
             }
-
-            return "redirect:/alquiler/crear";
+            return "redirect:/alquiler/pendientes";
         }
 
         try {
@@ -128,7 +132,8 @@ public class AlquilerController {
 
         servicioAlquiler.guardar(alquiler);
 
-        return "redirect:/alquiler/";
+        redirectAttributes.addFlashAttribute("mensaje","Se ha alquilado un nuevo equipo");
+        return "redirect:/alquiler/pendientes";
     }
 
 }

@@ -1,5 +1,9 @@
 package web2.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import web2.repositories.RepoAuthorities;
+import web2.services.ServicioUsuarios;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -12,6 +16,8 @@ public class User implements Serializable {
     private String apellido;
     private String password;
     private Boolean enabled;
+    @Transient
+    private String permiso;
 
     public User() { enabled = true; }
 
@@ -49,6 +55,12 @@ public class User implements Serializable {
     }
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+    public String getPermiso() {
+        return permiso;
+    }
+    public void setPermiso(String permiso) {
+        this.permiso = permiso;
     }
 
 }

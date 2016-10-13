@@ -23,15 +23,6 @@
     <div class="row">
         <div class="col s12 m6">
             <h1>${tema}</h1>
-            <div class="card blue-grey darken-1">
-                <div class="card-content white-text">
-                    <span class="card-title">Card Title</span>
-                    <p>Cuerpo de la carta</p>
-                </div>
-                <div class="card-action">
-                    <a href="/wepa">Go to wepa</a>
-                </div>
-            </div>
         </div>
     </div>
 </body>

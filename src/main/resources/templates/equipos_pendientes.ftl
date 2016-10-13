@@ -21,9 +21,14 @@
 <div class="container">
     <div class="row">
         <div class="col s6 offset-s3">
+            <h1>${titulo}</h1>
             <#if alquileres?size=0>
                 <h1>No hay equipos pendientes...</h1>
             <#else>
+                <#if mensaje??>
+                    <br>
+                    <span class="chip green white-text"><b>${mensaje}</b></span>
+                </#if>
                 <ul class="collection">
                     <#list alquileres as a>
                         <li class="collection-item avatar">
@@ -34,6 +39,8 @@
                             </#if>
                             <span class="title"><b>${a.equipo.nombre}</b></span>
                             <p>
+                                <b>Cliente:</b> ${a.cliente.cedula} ${a.cliente.nombre} ${a.cliente.apellido}
+                                <br>
                                 <b>Fecha Alquiler:</b> ${a.fechaRealizacion}
                                 <br>
                                 <b>Fecha Entrega:</b> ${a.fechaEntrega}
